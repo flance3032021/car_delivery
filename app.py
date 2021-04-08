@@ -62,35 +62,42 @@ try:
   st.write(f'The distance is {round(private_dyna_distt, 2)} kilometres.')
 
   if private_dyna_distt>50.0:
-    total_price= total_price+(((private_dyna_distt*private_dyna_price_per_km)+100)*private_dyna)
+    temp1= (((private_dyna_distt*private_dyna_price_per_km)+100)*private_dyna)
   else:
-    total_price= total_price+(150*private_dyna)
+    temp1= (150*private_dyna)
 
   if dyna_bed_dyna_distt>300.0:    
-    total_price= total_price+(((dyna_bed_dyna_distt*dyna_bed_dyna_price_per_km)+300)*dyna_bed_dyna)    
+    temp2= (((dyna_bed_dyna_distt*dyna_bed_dyna_price_per_km)+300)*dyna_bed_dyna)    
   else:
-    total_price= total_price+(0*dyna_bed_dyna)
+    temp2= (0*dyna_bed_dyna)
   
   if lowbed_distt>300.0:
-    total_price= total_price+(((lowbed_distt*lowbed_price_per_km)+300)*lowbed)
+    temp3= (((lowbed_distt*lowbed_price_per_km)+300)*lowbed)
   else:
-    total_price= total_price+(0*lowbed)
+    temp3= (0*lowbed)
 
   if luxury_distt>149.0:
-    total_price= total_price+((((luxury_distt*luxury_price_per_km)+(750000*0.01)))*luxury)
+    temp4= ((((luxury_distt*luxury_price_per_km)+(750000*0.01)))*luxury)
   else:
-    total_price= total_price+(((luxury_distt*luxury_price_per_km)+(750000*0.005))*luxury)
+    temp4= (((luxury_distt*luxury_price_per_km)+(750000*0.005))*luxury)
 
   if motocycle_distt>50.0:
-    total_price= total_price+(((motocycle_distt*motocycle_price_per_km)+100)*motocycle)
+    temp5= (((motocycle_distt*motocycle_price_per_km)+100)*motocycle)
   else:
-    total_price= total_price+(150*motocycle)
-
+    temp5= (150*motocycle)
+    
+  total_price= temp5+temp4+temp3+temp2+temp1
+  st.text(f'Cost of {private_dyna} Private Dyna transportation : {round(temp1, 2)}')
+  st.text(f'Cost of {dyna_bed_dyna} Dyna Bed Dyna transportation : {round(temp2, 2)}')
+  st.text(f'Cost of {lowbed} Lowbed transportation : {round(temp3, 2)}')
+  st.text(f'Cost of {luxury} Luxury transportation : {round(temp4, 2)}')
+  st.text(f'Cost of {motocycle} Motocycle transportation : {round(temp5, 2)}')
   st.subheader(f'Total cost of transportation : {round(total_price, 2)}')  
   st.number_input('Insert your price')
 
 except:
   pass
+
 
 
 
